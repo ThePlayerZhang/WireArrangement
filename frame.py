@@ -20,15 +20,10 @@ class Frame:
                 pygame.quit()
                 sys.exit()
         self.mouse = pygame.mouse.get_pos()
-
-
         self.frame.fill(self.bg_color)
         self.frame.blit(config.frame[self.layout]["bg"], (0, 0))
-        self.level()
+        self.command()
         pygame.display.update()
 
-
-    def level(self):
-        if 64 < self.mouse[0] < 668 and 64 < self.mouse[1] < 668:
-            pos = (int((self.mouse[0]-60)/76)*76+64, int((self.mouse[1]-60)/76)*76+64)
-            self.frame.blit(pygame.image.load("./res/pic/mouse.png"), pos)
+    def command(self):
+        pass
