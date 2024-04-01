@@ -1,6 +1,6 @@
 import pygame
-import game
-import timestamp as t
+from model import timestamp as t, game
+
 pygame.init()
 
 t.output("Hello from WireArrangement, the first output!", t.i)

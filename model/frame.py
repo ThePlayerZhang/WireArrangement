@@ -1,7 +1,7 @@
 import pygame
 import sys
-import config
-import timestamp as t
+from . import config
+from . import timestamp as t
 pygame.init()
 
 
