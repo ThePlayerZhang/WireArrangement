@@ -21,7 +21,7 @@ def output_log(text, level=0):  # 输出日志
 
 
 def save_log():
-    with open("./log/%s.txt" % datetime.datetime.now().strftime("%Y%m%d%H%M%S"), "w", encoding="utf-8") as file:
+    with open("./log/%s.log" % datetime.datetime.now().strftime("%Y%m%d%H%M%S"), "w", encoding="utf-8") as file:
         file.write("\n".join(log))
 
 
