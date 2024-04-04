@@ -23,6 +23,7 @@ class Frame(object):
         self.mouse = [0, 0]  # 当前鼠标位置
         self.key = []  # 被按下的按键
         self.window = pygame.display.set_mode(size)
+        self.fps_clock = pygame.time.Clock()
         o("加载窗体完成！")
 
     def command(self):
@@ -36,3 +37,4 @@ class Frame(object):
         self.key = pygame.key.get_pressed()
         self.command()
         pygame.display.update()
+        self.fps_clock.tick(self.fps)

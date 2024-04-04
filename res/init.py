@@ -1,6 +1,8 @@
 from pygame.image import load as i
 
 img = {
+    "ui.logo": i("./res/bg/logo.png"),
+
     "ui.main": i("./res/bg/main.jpg"),
     "ui.main.button.start": i("./res/but/main/start.png"),
     "ui.main.button.settings": i("./res/but/main/settings.png"),
