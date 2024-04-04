@@ -8,6 +8,13 @@ pygame.init()
 o("窗体模块加载成功！")
 
 
+def quit_game():
+    o("正在退出...")
+    pygame.quit()
+    save_log()
+    sys.exit()
+
+
 class Frame(object):
     def __init__(self):
         o("开始加载窗体...")
@@ -24,9 +31,7 @@ class Frame(object):
     def mainloop(self):
         for event in pygame.event.get():  # 经典检查退出
             if event.type == pygame.QUIT:
-                pygame.quit()
-                save_log()
-                sys.exit()
+                quit_game()
         self.mouse = pygame.mouse.get_pos()
         self.key = pygame.key.get_pressed()
         self.command()
