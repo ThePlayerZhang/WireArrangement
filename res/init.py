@@ -9,4 +9,5 @@ img = {
     "ui.main.button.settings.click": l("./res/but/main/settings_click.png"),
     "ui.main.button.exit.click": l("./res/but/main/exit_click.png"),
     "ui.setting": l("./res/bg/main.jpg"),
+    "ui.start": l("./res/bg/main.jpg")
 }
