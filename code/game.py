@@ -1,6 +1,7 @@
 import pygame
 from .log import o
 from .frame import Frame, quit_game
+from config import *
 from res.init import *
 
 pygame.init()
@@ -11,6 +12,11 @@ class Game(Frame):
     def __init__(self):
         super().__init__()
         self.main_ui_y = 0  # 当进行动画时，按钮的y坐标
+
+        self.mouse_pressed = False  # 为拖动关卡做支持
+        self.mouse_last_pos = (0, 0)
+        self.square_rect = img["ui.start.bg"].get_rect(center=(2048, 288))
+        self.square_rect.move_ip(0, 108)
 
     def click_command(self, pos1, pos2):  # 判断是否按下
         if pos1[0] < self.mouse[0] < pos2[0] and pos1[1] < self.mouse[1] < pos2[1]:
@@ -49,7 +55,15 @@ class Game(Frame):
             else:
                 self.main_ui_y += 15  # 动画运行代码
                 self.window.blit(img["ui.main.button.start"], (0, self.main_ui_y))
-                self.window.blit(img["ui.main.button.settings"], (0, self.main_ui_y*0.9))
-                self.window.blit(img["ui.main.button.exit"], (0, self.main_ui_y*0.8))
-                self.window.blit(img["ui.logo"], (0, self.main_ui_y*-1))
+                self.window.blit(img["ui.main.button.settings"], (0, self.main_ui_y * 0.9))
+                self.window.blit(img["ui.main.button.exit"], (0, self.main_ui_y * 0.8))
+                self.window.blit(img["ui.logo"], (0, self.main_ui_y * -1))
 
+        if self.frame == "ui.start":
+            if self.mouse_last_pos is not None and pygame.mouse.get_pressed(3)[0]:
+                dx = self.mouse[0] - self.mouse_last_pos[0]
+                self.square_rect.move_ip(dx, 0)
+            self.mouse_last_pos = self.mouse
+
+            # 绘制图片
+            self.window.blit(img["ui.start.bg"], self.square_rect)
